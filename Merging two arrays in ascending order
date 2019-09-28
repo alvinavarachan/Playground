@@ -1,0 +1,65 @@
+
+#include <stdio.h>
+int main()
+{
+int n,m,i,j,k;
+scanf("%d",&m);
+int arr1[m];
+for(i = 0; i<m;i++)
+{
+scanf("%d",&arr1[i]);
+}
+scanf("%d",&n);
+int arr2[n];
+
+for(i = 0;i<n;i++)
+{
+scanf("%d",&arr2[i]);
+}
+int a[m+n];
+for(i = 0; i < m; i++)
+{
+a[i] = arr1[i];
+}
+for(i = m, j = 0 ; i < m + n; i++)
+{
+a[i] = arr2[j++];
+}
+int q = m+n;
+for(i = 0; i < q; i++)
+   {
+       for(j = i+1; j < q; )
+       {
+           if(a[j] == a[i])
+           {
+               for(k = j; k < q; k++)
+               {
+                   a[k] = a[k+1];
+               }
+               q--;
+           }
+           else
+           {
+               j++;
+           }
+       }
+   }
+for(i=0;i<q;i++)
+ {
+ 	for(j=i+1;j<q;j++)
+ 	{
+ 	   if(a[i]>a[j])
+ 	   {
+ 	       int t = a[i];
+             a[i] = a[j];
+             a[j] = t;
+ 	   }
+ 	}
+ }
+for(i = 0; i < q; i++)
+{
+printf("%d ",a[i]);
+}
+printf("\n");
+return 0;
+}
